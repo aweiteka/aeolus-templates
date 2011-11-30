@@ -1,0 +1,8 @@
+<deployable name="application_stack">
+  <description>Deployable For JBoss Application Stack</description>
+  <assemblies>
+    <assembly name="Proxy Server" hwp="large">
+      <image id="15e2dfda-a406-4488-acb0-b5922d07994c"/>
+    </assembly>
+  </assemblies>
+</deployable>

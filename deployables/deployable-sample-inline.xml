@@ -1,0 +1,138 @@
+<!-- a deployable represents a set of instances to launch and configure at the
+     same time -->
+<deployable name="application_stack">
+  <description>Deployable For JBoss Application Stack</description>
+  <assemblies>
+    <!-- when a deployable is launched, each assembly defition in this file
+         will map to a launched instance -->
+    <assembly name="Proxy Server" hwp="large">
+      <!-- this image element references an image that exists in the image
+           warehouse
+           images get into the image warehouse either by building the
+           image from a template XML file, or by importing from an
+           external source (such as an Amazon AMI) -->
+      <image id="15e2dfda-a406-4488-acb0-b5922d07994c"/>
+      <services>
+        <service name="proxy1">
+          <!-- - this is a URL that the Audrey Configuration Server must be
+               able to access, and points to a script that is meant to
+               setup the proxy
+               - the user will be responsible for authoring and providing
+               this script -->
+          <executable url="https://www.aeolusproject.org/redmine/attachments/download/169/start_simple"/>
+          <files>
+            <!-- A basic test for inline file contents -->
+            <file>
+              <contents filename="test-inline-file"><![CDATA[#!/bin/bash
+
+echo "hello"]]>
+              </contents>
+            </file>
+          </files>
+          <!-- - the parameters that are fed into the "proxy_setup_script"
+               above are identified here in the "services" section
+               - this is a bit clunky and will likely change -->
+          <parameters>
+            <!-- only scalar parameter types are going to be supported
+                 initially -->
+            <parameter name="proxy_server_1_param_1" type="scalar">
+              <value><![CDATA[value 1]]></value>
+            </parameter>
+            <parameter name="proxy_server_1_param_2" type="scalar">
+              <value><![CDATA[value 2]]></value>
+            </parameter>
+          </parameters>
+        </service>
+        <service name="proxy2">
+          <!-- - this is a URL that the Audrey Configuration Server must be
+               able to access, and points to a script that is meant to
+               setup the proxy
+               - the user will be responsible for authoring and providing
+               this script -->
+          <executable url="https://www.aeolusproject.org/redmine/attachments/download/169/start_simple"/>
+          <!-- - the parameters that are fed into the "proxy_setup_script"
+               above are identified here in the "services" section
+               - this is a bit clunky and will likely change -->
+          <parameters>
+            <!-- only scalar parameter types are going to be supported
+                 initially -->
+            <parameter name="proxy_server_1_param_1" type="scalar">
+              <value><![CDATA[value 1]]></value>
+            </parameter>
+            <parameter name="proxy_server_1_param_2" type="scalar">
+              <value><![CDATA[value 2]]></value>
+            </parameter>
+          </parameters>
+        </service>
+      </services>
+      <!-- the items listed under the "returns" element are values that
+           are collected by the launched guest and returned to the
+           configuration server
+           the values that are returned to the configuration server can be
+           shared with other launched instances in this deployable -->
+      <returns>
+        <return name="hostname"/>
+      </returns>
+    </assembly>
+    <assembly name="Another Proxy Server" hwp="large">
+      <!-- this image element references an image that exists in the image
+           warehouse
+           images get into the image warehouse either by building the
+           image from a template XML file, or by importing from an
+           external source (such as an Amazon AMI) -->
+      <image id="15e2dfda-a406-4488-acb0-b5922d07994c"/>
+      <services>
+        <service name="proxy3">
+          <!-- - this is a URL that the Audrey Configuration Server must be
+               able to access, and points to a script that is meant to
+               setup the proxy
+               - the user will be responsible for authoring and providing
+               this script -->
+          <executable url="https://www.aeolusproject.org/redmine/attachments/download/169/start_simple"/>
+          <!-- - the parameters that are fed into the "proxy_setup_script"
+               above are identified here in the "services" section
+               - this is a bit clunky and will likely change -->
+          <parameters>
+            <!-- only scalar parameter types are going to be supported
+                 initially -->
+            <parameter name="proxy_server_2_param_1" type="scalar">
+              <value><![CDATA[value 1]]></value>
+            </parameter>
+            <parameter name="proxy_server_2_param_2" type="scalar">
+              <value><![CDATA[value 2]]></value>
+            </parameter>
+          </parameters>
+        </service>
+        <service name="proxy4">
+          <!-- - this is a URL that the Audrey Configuration Server must be
+               able to access, and points to a script that is meant to
+               setup the proxy
+               - the user will be responsible for authoring and providing
+               this script -->
+          <executable url="https://www.aeolusproject.org/redmine/attachments/download/169/start_simple"/>
+          <!-- - the parameters that are fed into the "proxy_setup_script"
+               above are identified here in the "services" section
+               - this is a bit clunky and will likely change -->
+          <parameters>
+            <!-- only scalar parameter types are going to be supported
+                 initially -->
+            <parameter name="proxy_server_2_param_1" type="scalar">
+              <value><![CDATA[value 1]]></value>
+            </parameter>
+            <parameter name="proxy_server_2_param_2" type="scalar">
+              <value><![CDATA[value 2]]></value>
+            </parameter>
+          </parameters>
+        </service>
+      </services>
+      <!-- the items listed under the "returns" element are values that
+           are collected by the launched guest and returned to the
+           configuration server
+           the values that are returned to the configuration server can be
+           shared with other launched instances in this deployable -->
+      <returns>
+        <return name="hostname"/>
+      </returns>
+    </assembly>
+  </assemblies>
+</deployable>
