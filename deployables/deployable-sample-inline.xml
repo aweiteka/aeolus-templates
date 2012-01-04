@@ -23,9 +23,7 @@
           <files>
             <!-- A basic test for inline file contents -->
             <file>
-              <contents filename="test-inline-file"><![CDATA[#!/bin/bash
-
-echo "hello"]]>
+              <contents filename="test-inline-file"><![CDATA[Inline file contents]]>
               </contents>
             </file>
           </files>
@@ -44,12 +42,16 @@ echo "hello"]]>
           </parameters>
         </service>
         <service name="proxy2">
-          <!-- - this is a URL that the Audrey Configuration Server must be
-               able to access, and points to a script that is meant to
-               setup the proxy
+          <!-- - an inline executable file
                - the user will be responsible for authoring and providing
                this script -->
-          <executable url="https://www.aeolusproject.org/redmine/attachments/download/169/start_simple"/>
+          <executable>
+            <contents><![CDATA[#!/bin/bash
+
+echo "hello"
+              ]]>
+            </contents>
+          </executable>
           <!-- - the parameters that are fed into the "proxy_setup_script"
                above are identified here in the "services" section
                - this is a bit clunky and will likely change -->
