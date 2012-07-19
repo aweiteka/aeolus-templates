@@ -40,7 +40,7 @@
                 pubkey contents
               </contents>
             </file>
-          </file>
+          </files>
         </service>
       </services>
       <returns>
@@ -87,7 +87,7 @@
                 pubkey contents
               </contents>
             </file>
-          </file>
+          </files>
         </service>
       </services>
       <returns>
